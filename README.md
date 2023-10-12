@@ -1,2 +1,2 @@
-# T01_Front-End_Soa_2023
-Contendrá todo el código dentro del proyecto de Front-End.
+# CarlosSanchez_SOA_Front-End_PRS
+Contendrá todo el code, del planteamiento sobre el Front-End del PRS (Proyecto de Responsabilidad Social).

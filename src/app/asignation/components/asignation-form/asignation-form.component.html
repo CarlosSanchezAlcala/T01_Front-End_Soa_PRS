@@ -1,0 +1,51 @@
+<div class="containerDataForm">
+  <form id="formColumnAsignation" [formGroup]="asignationDataForm" (ngSubmit)="saveAsignation()">
+
+    <div class="titleWeb" align="center" style="margin-top: -2rem">
+      <figure>
+        <p style="font-size: 45px" class="lead">
+          {{_asignationService.transactionSelected ? 'Editar datos del Funcionario' : 'Nuevo Funcionario'}}
+        </p>
+        <figcaption class="blockquote-footer">
+          Por favor colocar toda la información que se pide a continuación,
+          con la información
+          <strong><cite title="Source Title">correcta</cite></strong>
+          y
+          <strong><cite title="Source Title">veridica.</cite></strong>
+        </figcaption>
+      </figure>
+    </div>
+
+    <mat-form-field class="formForRegister formForRegister">
+      <mat-label>Descripción:</mat-label>
+      <input matInput formControlName="description">
+    </mat-form-field>
+
+    <mat-form-field class="formForRegister formForRegister">
+      <mat-label>Funcionario:</mat-label>
+      <mat-select formControlName="id_funcionary">
+        <mat-option *ngFor="let dFunc of funcionaryData" [value]="dFunc.id_funcionary">
+          {{dFunc.name}} {{dFunc.surnamefather}} {{dFunc.surnamemother}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="formForRegister formForRegister">
+      <mat-label>Adolescente:</mat-label>
+      <mat-select formControlName="id_teen">
+        <mat-option *ngFor="let dTeen of teenData" [value]="dTeen.id_teen">
+          {{dTeen.name}} {{dTeen.surnamefather}} {{dTeen.surnamemother}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div id="buttonActions">
+      <button type="button" id="buttonCancel" mat-flat-button color="primary" (click)="navigateToAsignationList()">
+        Cancelar
+      </button>
+      <button type="submit" id="buttonSave" mat-flat-button color="accent" [disabled]="asignationDataForm.invalid">
+        {{_asignationService.transactionSelected ? 'Modificar' : 'Registrar'}}
+      </button>
+    </div>
+  </form>
+</div>

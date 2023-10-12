@@ -1,0 +1,119 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$demo-soa-webapp-primary: mat.define-palette(mat.$indigo-palette);
+$demo-soa-webapp-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$demo-soa-webapp-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$demo-soa-webapp-theme: mat.define-light-theme((
+  color: (
+    primary: $demo-soa-webapp-primary,
+    accent: $demo-soa-webapp-accent,
+    warn: $demo-soa-webapp-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($demo-soa-webapp-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+mat-list-item {
+  cursor: pointer !important;
+  height: 48px !important;
+  border: 1px solid transparent;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+
+  &.no-active {
+    cursor: pointer !important;
+    border: none;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  mat-icon {
+    color: #001D35 !important;
+  }
+
+  &:hover {
+    background-color: #f1f3f4;
+  }
+
+}
+
+.mat-selection-list {
+  &.mat-list-base {
+    &.inline-selection-list {
+      display: flex;
+      flex-direction: column;
+
+      .mat-list-option {
+        height: 30px;
+      }
+    }
+
+    padding-top: 0;
+  }
+}
+
+@media (min-width: 640px) {
+  .mat-selection-list {
+    &.mat-list-base {
+      &.inline-selection-list {
+        display: flex;
+        flex-direction: row;
+
+        .mat-list-option {
+          height: 48px;
+        }
+      }
+    }
+  }
+}
+
+.vg-main-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: calc(100vh - 64px);
+}
+
+.mat-menu-panel {
+  &.color-palette {
+    min-width: 250px;
+
+    .palette-color-container {
+      -webkit-box-flex: 1;
+      -ms-flex: 1 1 100%;
+      flex: 1 1 100%;
+      margin: auto;
+      padding: 24px;
+      width: 100%;
+    }
+  }
+}

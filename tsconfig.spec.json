@@ -1,0 +1,29 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "@soa/*": [
+        "app/*"
+      ],
+      "@soa/env/*": [
+        "environments/*"
+      ],
+      "@soa/shared/*": [
+        "app/shared/*"
+      ],
+      "@soa/core/*": [
+        "app/core/*"
+      ]
+    },
+    "outDir": "./out-tsc/spec",
+    "types": [
+      "jasmine"
+    ]
+  },
+  "include": [
+    "src/**/*.spec.ts",
+    "src/**/*.d.ts"
+  ]
+}

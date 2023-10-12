@@ -1,0 +1,25 @@
+<mat-toolbar color="primary">
+    <button class="focus:outline-none" mat-icon-button (click)="handleClickMenu()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <h1>Servicio de Orientación al Adolescente</h1>
+
+    <div class="flex-spacer"></div>
+
+    <div>
+        <button mat-button [matMenuTriggerFor]="menu">
+            <mat-icon>account_circle</mat-icon>
+            <span class="ml-2">Mi cuenta</span>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+                <mat-icon>perm_identity</mat-icon>
+                <span>Mi perfil</span>
+            </button>
+            <button mat-menu-item>
+                <mat-icon>exit_to_app</mat-icon>
+                <span>Salir</span>
+            </button>
+        </mat-menu>
+    </div>
+</mat-toolbar>

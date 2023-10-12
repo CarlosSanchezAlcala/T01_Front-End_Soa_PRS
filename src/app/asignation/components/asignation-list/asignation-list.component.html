@@ -1,0 +1,70 @@
+<button id="buttonRegister" mat-flat-button color="accent" (click)="navigateToForm()">
+  Nueva Asignación
+</button>
+
+<button id="buttonListInactive" mat-flat-button color="accent">
+  Asignaciones Deshabilitadas
+</button>
+
+<div class="containerListData">
+  <table id="tableOfDataFuncionary" mat-table [dataSource]="asignationData" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="dataFuncionary">
+      <th mat-header-cell *matHeaderCellDef>Datos del Funcionario:</th>
+      <td mat-cell *matCellDef="let dataTransaccional">
+        {{dataTransaccional.funcionaryResponseDto.name}}
+        {{dataTransaccional.funcionaryResponseDto.surnamefather}}
+        {{dataTransaccional.funcionaryResponseDto.surnamemother}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="dniFuncionary">
+      <th mat-header-cell *matHeaderCellDef>Número de DNI:</th>
+      <td mat-cell *matCellDef="let dataTransaccional">
+        {{dataTransaccional.funcionaryResponseDto.dni}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="dataTeen">
+      <th mat-header-cell *matHeaderCellDef>Datos del Adolescente:</th>
+      <td mat-cell *matCellDef="let dataTransaccional">
+        {{dataTransaccional.teenResponseDto.name}}
+        {{dataTransaccional.teenResponseDto.surnamefather}}
+        {{dataTransaccional.teenResponseDto.surnamemother}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="dniTeen">
+      <th mat-header-cell *matHeaderCellDef>Número de DNI:</th>
+      <td mat-cell *matCellDef="let dataTransaccional">
+        {{dataTransaccional.teenResponseDto.dni}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="descripcionAsignacion">
+      <th mat-header-cell *matHeaderCellDef>Detalles:</th>
+      <td mat-cell *matCellDef="let dataTransaccional">
+        {{dataTransaccional.transaccionalAllocation.description}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Acciones</th>
+      <td mat-cell *matCellDef="let dataTransaccional">
+        <button id="buttonEliminar" mat-flat-button color="warn"
+                (click)="dataTransaccional && dataTransaccional.asignationData && dataTransaccional.asignationData.id_funcionaryteend !== undefined ? deleteDataCompleteAsignation(dataTransaccional.asignationData.id_funcionaryteend) : null">
+          Eliminar
+        </button>
+        <button id="buttonModificar" mat-flat-button color="primary"
+                (click)="updateTwoWayDataAsignation(dataTransaccional.transaccionalAllocation.id_funcionaryteend)">
+          Modificar
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="funcionaryColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: funcionaryColumns;"></tr>
+
+  </table>
+</div>
+

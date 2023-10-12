@@ -1,0 +1,13 @@
+<app-admin-header (clickedMenu)="handleClickToggleDrawer()"></app-admin-header>
+
+<mat-drawer-container class="vg-main-container">
+  <mat-drawer #drawer [mode]="!mobileQuery.matches ? 'side' : 'push'" [opened]="!mobileQuery.matches"
+              style="width: 310px">
+    <app-admin-sidebar (clickedMenuItem)="closeDrawerWhenMobileQueryMatches()"></app-admin-sidebar>
+  </mat-drawer>
+  <mat-drawer-content style="background: #F1F5F9;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
