@@ -7,5 +7,10 @@ export class Teen {
   phonenumber: string = '';
   address: string = '';
   email: string = '';
+  birthade: string = '';
+  gender: string = '';
+  crime_committed: string = '';
+  attorney: string = '';
+  codubi: string = '';
   status: string = '';
 }

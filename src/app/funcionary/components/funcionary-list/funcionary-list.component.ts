@@ -17,8 +17,7 @@ export class FuncionaryListComponent implements OnInit {
 
   funcionaryColumns: string[] = ['name', 'surname', 'dni', 'phonenumber', 'range', 'confirmation', 'department', 'address', 'email', 'actions', 'detalles'];
   funcionaryData: any[] = [];
-  dataSource!: MatTableDataSource<Funcionary>;
-  selectedFuncionario: any; // Funcionario seleccionado
+  selectedFuncionario: any;
   showDetails = false;
 
   constructor(public funcionaryServices: FuncionaryService,

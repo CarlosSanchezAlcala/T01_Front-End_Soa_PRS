@@ -13,7 +13,7 @@ import {TeenService} from "@soa/teen/services/teen.service";
 })
 export class TeenListComponent implements OnInit {
 
-  teenColumns: string[] = ['name', 'surname', 'dni', 'phonenumber', 'address', 'email', 'actions'];
+  teenColumns: string[] = ['name', 'surname', 'dni', 'phonenumber', 'address', 'email', 'birthade', 'gender', 'crime_committed', 'attorney', 'codubi', 'actions'];
   teenDataForm: FormGroup = new FormGroup({});
   teenData: any[] = [];
   showForm = false;
