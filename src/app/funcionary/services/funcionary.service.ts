@@ -8,14 +8,14 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class FuncionaryService {
-
   private urlFuncionary = `${environment.apiUrl}/api/funcionaryData`;
+  private urlUbigeoAddress = `${environment.apiUrlUbigeoAddress}/api/address`;
   funcionarySelected: Funcionary | undefined = undefined;
 
-  private baseUrl = 'http://localhost:8083';
-  private apiUrl = 'http://localhost:8083/getData';
+  //private baseUrl = 'http://localhost:8083';
+  //private apiUrl = 'http://localhost:8083/getData';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   findAll() {
     return this.http.get(`${this.urlFuncionary}/listData`);
@@ -26,11 +26,15 @@ export class FuncionaryService {
   }
 
   findDataRankLegalGuardian() {
-    return this.http.get(this.urlFuncionary + '/listData/legalGuardian')
+    return this.http.get(this.urlFuncionary + '/listData/legalGuardian');
   }
 
   findAllDataInactive() {
     return this.http.get(this.urlFuncionary + '/listData/inactive');
+  }
+
+  findAllDataUbigeoAddress() {
+    return this.http.get(this.urlUbigeoAddress + '/listData');
   }
 
   saveNewFuncionary(funcionary: Funcionary) {
@@ -38,17 +42,27 @@ export class FuncionaryService {
   }
 
   updateDataFuncionary(funcionary: Funcionary) {
-    return this.http.put(this.urlFuncionary + '/' + funcionary.id_funcionary, funcionary);
+    return this.http.put(
+      this.urlFuncionary + '/' + funcionary.id_funcionary,
+      funcionary
+    );
   }
 
   deleteLogicalDataFuncionary(funcionary: Funcionary) {
-    return this.http.patch(this.urlFuncionary + '/deleteLogical/' + funcionary.id_funcionary, funcionary);
+    return this.http.patch(
+      this.urlFuncionary + '/deleteLogical/' + funcionary.id_funcionary,
+      funcionary
+    );
   }
 
   reactiveLogicalDataFuncionary(funcionary: Funcionary) {
-    return this.http.patch(this.urlFuncionary + /reactiveLogical/ + funcionary.id_funcionary, funcionary);
+    return this.http.patch(
+      this.urlFuncionary + /reactiveLogical/ + funcionary.id_funcionary,
+      funcionary
+    );
   }
 
+  /*
   mergePdf(pdfUrls: string[]): Observable<Blob> {
     return this.http.post<Blob>(`${this.baseUrl}/merge-pdf`, pdfUrls, {
       responseType: 'blob' as 'json'
@@ -58,6 +72,5 @@ export class FuncionaryService {
   getData(): Observable<any> {
     return this.http.get(this.apiUrl);
   }
-
-
+  */
 }

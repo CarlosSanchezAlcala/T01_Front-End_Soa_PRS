@@ -25,19 +25,24 @@
       <td mat-cell *matCellDef="let element"> {{element.phonenumber}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="rank">
-      <th mat-header-cell *matHeaderCellDef> Rank:</th>
-      <td mat-cell *matCellDef="let element"> {{element.rank}} </td>
+    <ng-container matColumnDef="range">
+      <th mat-header-cell *matHeaderCellDef> Cargo:</th>
+      <td mat-cell *matCellDef="let element"> {{element.range}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="department">
-      <th mat-header-cell *matHeaderCellDef> Departamento:</th>
-      <td mat-cell *matCellDef="let element"> {{element.department}} </td>
+    <ng-container matColumnDef="confirmation">
+      <th mat-header-cell *matHeaderCellDef>Tutor Legal:</th>
+      <td mat-cell *matCellDef="let element"> {{getCompleteConfirmation(element.confirmation)}} </td>
     </ng-container>
 
     <ng-container matColumnDef="address">
       <th mat-header-cell *matHeaderCellDef> Dirección:</th>
       <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="ubigeo">
+      <th mat-header-cell *matHeaderCellDef> Ubicación:</th>
+      <td mat-cell *matCellDef="let element">{{getDataUbigeoCompleteFind(element.codubi)}}</td>
     </ng-container>
 
     <ng-container matColumnDef="email">

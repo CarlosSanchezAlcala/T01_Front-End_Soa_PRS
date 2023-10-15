@@ -49,13 +49,15 @@ export class ArchivosDComponent implements OnInit{
 constructor(private _dialog: MatDialog, private _fbService: FuncionaryService, private http: HttpClient,  @Inject(MAT_DIALOG_DATA) public data: any){}
 
   ngOnInit(): void {
+    /*
     if (this.data && this.data.dni) {
       this.searchTerm = this.data.dni;
       this.actualizarTabla(); // Llama a actualizarTabla en lugar de realizarBusqueda en la inicialización
     }
+    */
   }
 
-
+  /*
   actualizarTabla(): void {
     this._fbService.getData().subscribe((response) => {
       this.data = response;
@@ -64,7 +66,7 @@ constructor(private _dialog: MatDialog, private _fbService: FuncionaryService, p
       this.realizarBusqueda();
     });
   }
-
+  */
 
   realizarBusqueda(): void {
     if (this.data && Array.isArray(this.data)) { // Asegura que this.data sea un array

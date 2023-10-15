@@ -1,8 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {FuncionaryService} from '@soa/funcionary/services/funcionary.service';
-import {Router} from "@angular/router";
-import {Funcionary} from "@soa/funcionary/model/funcionary.model";
-import { MatTableDataSource } from '@angular/material/table';
+import { Component, OnInit } from '@angular/core';
+import { FuncionaryService } from '@soa/funcionary/services/funcionary.service';
+import { Router } from "@angular/router";
+import { Funcionary } from "@soa/funcionary/model/funcionary.model";
 import { CoreService } from '@soa/core/core.service';
 import { MatDialog } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
@@ -15,17 +14,19 @@ import { ArchivosDComponent } from '@soa/archivos-d/archivos-d.component';
 })
 export class FuncionaryListComponent implements OnInit {
 
-  funcionaryColumns: string[] = ['name', 'surname', 'dni', 'phonenumber', 'range', 'confirmation', 'department', 'address', 'email', 'actions', 'detalles'];
+  funcionaryColumns: string[] = ['name', 'surname', 'dni', 'phonenumber', 'range', 'confirmation', 'address', 'ubigeo-address', 'email', 'actions', 'detalles'];
   funcionaryData: any[] = [];
+  ubigeoData: any[] = [];
   selectedFuncionario: any;
   showDetails = false;
 
   constructor(public funcionaryServices: FuncionaryService,
-              private router: Router, private _coreService: CoreService,private _dialog: MatDialog,private http: HttpClient) {
+    private router: Router, private _coreService: CoreService, private _dialog: MatDialog, private http: HttpClient) {
   }
 
   ngOnInit(): void {
     this.findAllDataActive();
+    this.findAllDataUbigeoAddress();
   }
 
   findAll() {
@@ -41,9 +42,25 @@ export class FuncionaryListComponent implements OnInit {
 
   findAllDataActive() {
     this.funcionaryServices.findAllDataActive().subscribe((dataFuncionaryActive: any) => {
-      console.log('Estos son los datos en modo activos que se están recibiendo de la Base de Datos: ', dataFuncionaryActive);
+      // console.log('Estos son los datos en modo activos que se están recibiendo de la Base de Datos: ', dataFuncionaryActive); --------- // Running successfully
       this.funcionaryData = dataFuncionaryActive;
     })
+  }
+
+  findAllDataUbigeoAddress() {
+    this.funcionaryServices.findAllDataUbigeoAddress().subscribe((dataUbigeoNecesaryFormListAndForm: any) => {
+      // console.log('Ubigeo Data: ', dataUbigeoNecesaryFormListAndForm);  --------- // Running successfully
+      this.ubigeoData = dataUbigeoNecesaryFormListAndForm;
+    })
+  }
+
+  getDataUbigeoFind(codubi: string) {
+    const ubication = this.ubigeoData.find((item) => item.codubi === codubi);
+    if (ubication) {
+      return `${ubication.depar} - ${ubication.provi} - ${ubication.distri}`;
+    } else {
+      return 'Ubigeo no determinado o no valido, verificar por favor, gracias.'
+    }
   }
 
   showFuncionarioDetails(funcionario: any) {
@@ -60,13 +77,13 @@ export class FuncionaryListComponent implements OnInit {
 
   navigateToForm() {
     this.router.navigate(['funcionario/funcionary-form']).then(() => {
-      console.log('Se está redirigiendo a la pestaña del formulario (Registro || Modificación de datos)')
+      // console.log('Se está redirigiendo a la pestaña del formulario (Registro || Modificación de datos)'); --------- // Running successfully
     })
   }
 
   navigateToInactive() {
     this.router.navigate(['funcionario/funcionary-inactive']).then(() => {
-      console.log('Se está redirigiendo a la pestaña del listado de funcionarios inactivos')
+      // console.log('Se está redirigiendo a la pestaña del listado de funcionarios inactivos'); --------- // Running successfully
     })
   }
 
@@ -78,7 +95,7 @@ export class FuncionaryListComponent implements OnInit {
 
   deleteDataFuncionary(funcionary: Funcionary) {
     this.funcionaryServices.deleteLogicalDataFuncionary(funcionary).subscribe((dataDeleteLogical) => {
-      console.log('Se esta eliminando el dato de: ', dataDeleteLogical);
+      // console.log('Se esta eliminando el dato de: ', dataDeleteLogical); --------- // Running successfully
       this.findAllDataActive();
     })
   }
