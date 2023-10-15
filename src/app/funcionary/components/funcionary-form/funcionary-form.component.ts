@@ -42,6 +42,7 @@ export class FuncionaryFormComponent implements OnInit, OnDestroy {
       department: ['', Validators.required],
       address: ['',Validators.required],
       email: ['',Validators.required],
+      codubi: [''],
       status: ['A'],
     });
     if (this.funcionaryServices.funcionarySelected) {

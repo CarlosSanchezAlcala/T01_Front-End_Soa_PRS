@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { environment } from '@soa/env/environment.development';
+import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {environment} from '@soa/env/environment.development';
 import {Teen} from "@soa/teen/model/teen.model";
 
 @Injectable({
@@ -9,10 +9,12 @@ import {Teen} from "@soa/teen/model/teen.model";
 export class TeenService {
 
   private urlTeen = `${environment.apiUrlTeen}/api/teenData`;
+  private urlUbigeoAddress = `${environment.apiUrlUbigeoAddress}/api/address`;
 
   teenSelected: Teen | undefined = undefined;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   findAll() {
     return this.http.get(`${this.urlTeen}/listData`);
@@ -20,6 +22,10 @@ export class TeenService {
 
   findAllDataActive() {
     return this.http.get(this.urlTeen + '/listData/active');
+  }
+
+  findAllDataUbigeoAddress() {
+    return this.http.get(this.urlUbigeoAddress + '/listData');
   }
 
   saveNewTeen(teen: Teen) {

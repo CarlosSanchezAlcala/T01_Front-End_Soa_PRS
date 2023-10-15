@@ -5,6 +5,7 @@ import {FuncionaryService} from "@soa/funcionary/services/funcionary.service";
 import {MatDialog} from "@angular/material/dialog";
 import {TeenService} from "@soa/teen/services/teen.service";
 import {AsignationService} from "@soa/asignation/services/asignation.service";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-teen-form',
@@ -17,7 +18,7 @@ export class TeenFormComponent implements OnInit, OnDestroy {
   legalGuardianAsignationFrom: FormGroup = new FormGroup({});
   funcionaryData: any[] = [];
   teenData: any[] = [];
-  dataAsignation: any[] = [];
+  ubigeoData: any[] = [];
   idTeenNecesaryForRegisterAsignation: any[] = [];
 
   constructor(private router: Router,
@@ -35,6 +36,11 @@ export class TeenFormComponent implements OnInit, OnDestroy {
       phonenumber: [''],
       address: [''],
       email: [''],
+      birthdate: [''],
+      gender: [''],
+      crime_committed: [''],
+      attorney: [''],
+      codubi: [''],
       status: ['A'],
     });
     this.legalGuardianAsignationFrom = this.fb.group({
@@ -52,6 +58,7 @@ export class TeenFormComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.findAllDataActive();
     this.findAllDataFuncionaryRankLegalGuardian();
+    this.findAllDataUbigeo();
   }
 
   navigateToTeenList() {
@@ -64,6 +71,13 @@ export class TeenFormComponent implements OnInit, OnDestroy {
     this._asignationDataFuncionaryService.findDataRankLegalGuardian().subscribe((dataLegalGuardianRank: any) => {
       //console.log('Funcionarios con rank de Tutor Legal: ', dataLegalGuardianRank);
       this.funcionaryData = dataLegalGuardianRank;
+    })
+  }
+
+  findAllDataUbigeo() {
+    this.teenServices.findAllDataUbigeoAddress().subscribe((dataUbigeo: any) => {
+      console.log('Ubigeo Data: ', dataUbigeo);
+      this.ubigeoData = dataUbigeo;
     })
   }
 

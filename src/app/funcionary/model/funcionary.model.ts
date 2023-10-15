@@ -10,5 +10,6 @@ export class Funcionary {
   department: string = '';
   address: string = '';
   email: string = '';
+  codubi: string = '';
   estado: string = '';
 }

@@ -14,9 +14,10 @@ import {TeenRoutingModule} from "@soa/teen/teen-routing.module";
 import {HomeTeenPage} from "@soa/teen/pages";
 import {TeenListComponent} from "@soa/teen/components/teen-list/teen-list.component";
 import {TeenFormComponent} from "@soa/teen/components/teen-form/teen-form.component";
+import {MatDatepickerModule} from "@angular/material/datepicker";
 
 @NgModule({
   declarations: [HomeTeenPage, TeenListComponent, TeenFormComponent],
-  imports: [CommonModule, TeenRoutingModule, MatTableModule, MatButtonModule, MatDialogModule, MatInputModule, ReactiveFormsModule, MatOptionModule, MatSelectModule],
+    imports: [CommonModule, TeenRoutingModule, MatTableModule, MatButtonModule, MatDialogModule, MatInputModule, ReactiveFormsModule, MatOptionModule, MatSelectModule, MatDatepickerModule],
 })
 export class TeenModule {}

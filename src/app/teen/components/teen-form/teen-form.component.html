@@ -40,6 +40,40 @@
     <input maxlength="9" minlength="9" matInput formControlName="phonenumber">
   </mat-form-field>
 
+  <mat-form-field>
+    <mat-label>Fecha de Nacimiento:</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="birthdate">
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field class="formForRegister formForRegister">
+    <mat-label>Sexo:</mat-label>
+    <mat-select formControlName="gender">
+      <mat-option value="F">Femenino</mat-option>
+      <mat-option value="M">Masculino</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="formForRegister formForRegister">
+    <mat-label>Crimen cometido:</mat-label>
+    <input matInput formControlName="crime_committed">
+  </mat-form-field>
+
+  <mat-form-field class="formForRegister formForRegister">
+    <mat-label>Apoderado:</mat-label>
+    <input matInput formControlName="crime_committed">
+  </mat-form-field>
+
+  <mat-form-field class="formForRegister formForRegister">
+    <mat-label>Ubicación:</mat-label>
+    <mat-select formControlName="codubi">
+      <mat-option *ngFor="let dUbi of ubigeoData" [value]="dUbi.codubi">
+        {{dUbi.depar}} - {{dUbi.provi}} , {{dUbi.distri}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
   <mat-form-field class="formForRegister formForRegister">
     <mat-label>Dirección | Domicilio:</mat-label>
     <input matInput formControlName="address">

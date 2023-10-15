@@ -87,6 +87,11 @@
       <mat-error *ngIf="funcionaryDataForm.get('surnamefather')?.hasError('required')">Obligatorio</mat-error>
     </mat-form-field>
 
+    <mat-form-field class="formForRegister formForRegister">
+      <mat-label>Ubigeo:</mat-label>
+      <input matInput formControlName="codubi">
+    </mat-form-field>
+
     <div id="buttonActions">
       <button type="button" id="buttonCancel" mat-flat-button color="primary" (click)="navigateToFuncionaryList()">
         Cancelar

@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {FormBuilder, FormGroup} from "@angular/forms";
 import {MatDialog} from "@angular/material/dialog";
 import {Teen} from "@soa/teen/model/teen.model";
 import {TeenFormComponent} from "@soa/teen/components/teen-form/teen-form.component";
@@ -14,17 +13,17 @@ import {TeenService} from "@soa/teen/services/teen.service";
 export class TeenListComponent implements OnInit {
 
   teenColumns: string[] = ['name', 'surname', 'dni', 'phonenumber', 'address', 'email', 'birthade', 'gender', 'crime_committed', 'attorney', 'codubi', 'actions'];
-  teenDataForm: FormGroup = new FormGroup({});
   teenData: any[] = [];
-  showForm = false;
+  ubigeoData: any[] = [];
 
   constructor(public teenServices: TeenService,
               private router: Router,
-              private fb: FormBuilder,
-              public dialog: MatDialog) {}
+              public dialog: MatDialog) {
+  }
 
   ngOnInit(): void {
     this.findAllDataActive();
+    this.findAllDataUbigeo();
   }
 
   openDialog() {
@@ -37,20 +36,35 @@ export class TeenListComponent implements OnInit {
   findAll() {
     this.teenServices.findAll().subscribe((dataTeen: any) => {
       console.log(dataTeen);
-      this.teenData = dataTeen;
+      // this.teenData = dataTeen; Data complete without "Active (A)"
     })
   }
 
   findAllDataActive() {
     this.teenServices.findAllDataActive().subscribe((dataTeenActive: any) => {
-      console.log('Estos son los datos en modo activos que se están recibiendo de la Base de Datos: ', dataTeenActive);
+      console.log('Data Teen: ', dataTeenActive);
       this.teenData = dataTeenActive;
     })
   }
 
+  findAllDataUbigeo() {
+    this.teenServices.findAllDataUbigeoAddress().subscribe((dataFindUbigeoAddress: any) => {
+      console.log('Data Ubigeo: ', dataFindUbigeoAddress);
+      this.ubigeoData = dataFindUbigeoAddress;
+    })
+  }
+
+  getUbigeoDataFindBD(codubi: string) {
+    const ubication = this.ubigeoData.find(item => item.codubi === codubi);
+    if (ubication) {
+      return `${ubication.depar}-${ubication.provi}-${ubication.distri}`;
+    } else {
+      return 'Ubicación no determinada.'
+    }
+  }
+
   navigateToForm() {
     this.router.navigate(['adolescente/teen-form']).then(() => {
-      console.log('Se esta redirigiendo a la pestaña del formulario (Registro || Modificación de datos)')
     })
   }
 
