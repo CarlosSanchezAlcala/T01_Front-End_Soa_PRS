@@ -33,6 +33,10 @@ export class TeenListComponent implements OnInit {
     });
   }
 
+  getConfirmationGenderSexTeen(confirmation: string) {
+    return confirmation === 'M' ? 'Masculino' : 'Femenino';
+  }
+
   findAll() {
     this.teenServices.findAll().subscribe((dataTeen: any) => {
       console.log(dataTeen);
