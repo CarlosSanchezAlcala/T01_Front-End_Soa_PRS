@@ -22,7 +22,8 @@ export class AsignationFormComponent implements OnInit, OnDestroy {
               public _asignationService: AsignationService,
               private _asignationDataFuncionaryService: FuncionaryService,
               private _asignationDataTeenService: TeenService,
-              private _fb: FormBuilder) {}
+              private _fb: FormBuilder) {
+  }
 
   ngOnInit(): void {
     this.initAsignationForm();
@@ -100,7 +101,7 @@ export class AsignationFormComponent implements OnInit, OnDestroy {
 
   updateDataExistentAsignation() {
     console.log('Los datos a actualizar son: ', this.asignationDataForm.value);
-    this._asignationService.updateTwoWayAsignation(this.asignationDataForm.value).subscribe((dataUpdateAsignation) => {
+    this._asignationService.updateDataAsignation(this.asignationDataForm.value).subscribe((dataUpdateAsignation) => {
       console.log('Los datos ingresados para actualizar son: ', dataUpdateAsignation);
       this.asignationDataForm.reset();
       this.navigateToAsignationList();

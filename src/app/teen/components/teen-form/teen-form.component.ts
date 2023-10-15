@@ -5,7 +5,6 @@ import {FuncionaryService} from "@soa/funcionary/services/funcionary.service";
 import {MatDialog} from "@angular/material/dialog";
 import {TeenService} from "@soa/teen/services/teen.service";
 import {AsignationService} from "@soa/asignation/services/asignation.service";
-import {format} from 'date-fns';
 
 @Component({
   selector: 'app-teen-form',
@@ -91,10 +90,10 @@ export class TeenFormComponent implements OnInit, OnDestroy {
 
   saveTeen() {
     if (this.teenServices.teenSelected) {
-      // Actualizar || Modificar
+      // Update || Modify
       this.updateDataTeen();
     } else {
-      // Registrar || Crear
+      // Recording || Create
       this.registerNewDataTeenAndAsignation();
     }
   }
@@ -106,7 +105,7 @@ export class TeenFormComponent implements OnInit, OnDestroy {
       this.idTeenNecesaryForRegisterAsignation = teendataRegister.id_teen;
       console.log('The last id is: ', this.idTeenNecesaryForRegisterAsignation);
 
-      // Ahora que tienes el ID del adolescente, procedes a registrar la asignación
+
       this.legalGuardianAsignationFrom.patchValue({
         id_teen: this.idTeenNecesaryForRegisterAsignation,
       });
@@ -116,7 +115,6 @@ export class TeenFormComponent implements OnInit, OnDestroy {
       this._asignationServices.saveNewAsignation(this.legalGuardianAsignationFrom.value).subscribe((dataAsignationForFormTeen: any) => {
         console.log('Data for register in Transactional is: ', dataAsignationForFormTeen);
 
-        // Restablecer los formularios y navegar a la lista de adolescentes
         this.teenDataForm.reset();
         this.legalGuardianAsignationFrom.reset();
         this.navigateToTeenList();
@@ -127,27 +125,17 @@ export class TeenFormComponent implements OnInit, OnDestroy {
   }
 
   updateDataTeen() {
-    console.log('Datos ingresados en el formulario: ', this.teenDataForm.value);
+    console.log('Only Data Form: ', this.teenDataForm.value);
     this.teenServices.updateDataTeen(this.teenDataForm.value).subscribe((dataUpdate) => {
-      console.log('Los datos ingresados dentro del formulario para modificar || actualiazr son: ', dataUpdate);
+      console.log('Data Form for Modify | Update: ', dataUpdate);
       this.teenDataForm.reset();
       this.navigateToTeenList();
       this.dialog.closeAll();
-    })
+    });
   }
 
-  ngOnDestroy(): void {
+  ngOnDestroy() {
     this.teenServices.teenSelected = undefined;
+    this._asignationServices.asignationSelected = undefined;
   }
-
-  registerNewDataAsignation() {
-    console.log('Data in Form is: ', this.legalGuardianAsignationFrom.value);
-    this._asignationServices.saveNewAsignation(this.legalGuardianAsignationFrom.value).subscribe((dataAsignationForFormTeen: any) => {
-      console.log('Data for register in Transactional is: ', dataAsignationForFormTeen);
-      this.idTeenNecesaryForRegisterAsignation = dataAsignationForFormTeen.id_teen;
-      this.legalGuardianAsignationFrom.reset();
-      this.navigateToTeenList();
-    })
-  }
-
 }

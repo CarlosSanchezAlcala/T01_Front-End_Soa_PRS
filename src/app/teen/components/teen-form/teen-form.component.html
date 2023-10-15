@@ -3,7 +3,7 @@
   <div class="titleWeb" align="center">
     <figure>
       <p style="font-size: 55px" class="lead">
-        {{teenServices.teenSelected ? 'Editar datos del Adolescente' : 'Nuevo Adolescente'}}
+        {{teenServices.teenSelected && _asignationServices.transactionSelected? 'Editar datos del Adolescente' : 'Nuevo Adolescente'}}
       </p>
       <figcaption class="blockquote-footer">
         Por favor colocar toda la información que se pide a continuación,
@@ -50,7 +50,7 @@
     <input matInput formControlName="email">
   </mat-form-field>
 
-  <mat-form-field>
+  <mat-form-field class="formForRegister formForRegister">
     <mat-label>Fecha de Nacimiento:</mat-label>
     <input matInput [matDatepicker]="picker" formControlName="birthade">
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
@@ -79,7 +79,7 @@
     <mat-label>Ubicación:</mat-label>
     <mat-select formControlName="codubi">
       <mat-option *ngFor="let dUbi of ubigeoData" [value]="dUbi.codubi">
-        {{dUbi.depar}} - {{dUbi.provi}} , {{dUbi.distri}}
+        {{dUbi.depar}} - {{dUbi.provi}} - {{dUbi.distri}}
       </mat-option>
     </mat-select>
   </mat-form-field>
@@ -107,7 +107,7 @@
       Cancelar
     </button>
     <button type="submit" id="buttonSave" mat-flat-button color="accent" [disabled]="teenDataForm.invalid">
-      {{teenServices.teenSelected ? 'Modificar' : 'Registrar'}}
+      {{teenServices.teenSelected && _asignationServices.transactionSelected ? 'Modificar' : 'Registrar'}}
     </button>
   </div>
 </form>
