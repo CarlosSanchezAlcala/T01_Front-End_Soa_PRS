@@ -4,6 +4,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {Teen} from "@soa/teen/model/teen.model";
 import {TeenFormComponent} from "@soa/teen/components/teen-form/teen-form.component";
 import {TeenService} from "@soa/teen/services/teen.service";
+import { addDays, format } from 'date-fns';
 
 @Component({
   selector: 'app-teen-list',
@@ -46,14 +47,14 @@ export class TeenListComponent implements OnInit {
 
   findAllDataActive() {
     this.teenServices.findAllDataActive().subscribe((dataTeenActive: any) => {
-      console.log('Data Teen: ', dataTeenActive);
+      // console.log('Data Teen: ', dataTeenActive);  --------- // Running successfully
       this.teenData = dataTeenActive;
     })
   }
 
   findAllDataUbigeo() {
     this.teenServices.findAllDataUbigeoAddress().subscribe((dataFindUbigeoAddress: any) => {
-      console.log('Data Ubigeo: ', dataFindUbigeoAddress);
+      // console.log('Data Ubigeo: ', dataFindUbigeoAddress); --------- // Running successfully
       this.ubigeoData = dataFindUbigeoAddress;
     })
   }
@@ -80,7 +81,7 @@ export class TeenListComponent implements OnInit {
 
   deleteDataTeen(teen: Teen) {
     this.teenServices.deleteLogicalDataTeen(teen).subscribe((dataDeleteLogical) => {
-      console.log('Se esta eliminando el dato de: ', dataDeleteLogical);
+      // console.log('Se esta eliminando el dato de: ', dataDeleteLogical); --------- // Running successfully
       this.findAllDataActive();
     })
   }
