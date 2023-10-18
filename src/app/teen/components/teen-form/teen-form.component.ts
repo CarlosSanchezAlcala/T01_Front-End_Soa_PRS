@@ -16,6 +16,7 @@ export class TeenFormComponent implements OnInit, OnDestroy {
   teenDataForm: FormGroup = new FormGroup({});
   legalGuardianAsignationFrom: FormGroup = new FormGroup({});
   funcionaryData: any[] = [];
+  attorneyData: any[] = [];
   teenData: any[] = [];
   ubigeoData: any[] = [];
   idTeenNecesaryForRegisterAsignation: any[] = [];
@@ -70,6 +71,13 @@ export class TeenFormComponent implements OnInit, OnDestroy {
     this._asignationDataFuncionaryService.findDataRankLegalGuardian().subscribe((dataLegalGuardianRank: any) => {
       // console.log('Funcionarios con rank de Tutor Legal: ', dataLegalGuardianRank); --------- // Running successfully
       this.funcionaryData = dataLegalGuardianRank;
+    })
+  }
+
+  findAllDataAttorney() {
+    this.teenServices.findAllDataAttorney().subscribe((dataFindAttorney: any) => {
+        //console.log('Data Attorney: ', dataFindAttorney); //--------- // Running successfully
+        this.attorneyData = dataFindAttorney;
     })
   }
 

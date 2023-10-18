@@ -4,7 +4,6 @@ import {MatDialog} from "@angular/material/dialog";
 import {Teen} from "@soa/teen/model/teen.model";
 import {TeenFormComponent} from "@soa/teen/components/teen-form/teen-form.component";
 import {TeenService} from "@soa/teen/services/teen.service";
-import { addDays, format } from 'date-fns';
 
 @Component({
   selector: 'app-teen-list',
@@ -16,6 +15,7 @@ export class TeenListComponent implements OnInit {
   teenColumns: string[] = ['name', 'surname', 'dni', 'phonenumber', 'address', 'email', 'birthade', 'gender', 'crime_committed', 'attorney', 'codubi', 'actions'];
   teenData: any[] = [];
   ubigeoData: any[] = [];
+  attorneyData: any[] = [];
 
   constructor(public teenServices: TeenService,
               private router: Router,
@@ -25,6 +25,7 @@ export class TeenListComponent implements OnInit {
   ngOnInit(): void {
     this.findAllDataActive();
     this.findAllDataUbigeo();
+    this.findAllDataAttorney();
   }
 
   openDialog() {
@@ -59,8 +60,24 @@ export class TeenListComponent implements OnInit {
     })
   }
 
+  findAllDataAttorney() {
+    this.teenServices.findAllDataAttorney().subscribe((dataFindAttorney: any) => {
+      console.log('Data Attorney: ', dataFindAttorney); //--------- // Running successfully
+      this.attorneyData = dataFindAttorney;
+    })
+  }
+
+  getAttorneyDataFindBD(id_attorney: number) {
+    const attorney = this.attorneyData.find((item) => item.id_attorney === id_attorney);
+    if (attorney) {
+      return `${attorney.id_attorney}`;
+    } else {
+      return 'Apoderado no determinado.';
+    }
+  }
+
   getUbigeoDataFindBD(codubi: string) {
-    const ubication = this.ubigeoData.find(item => item.codubi === codubi);
+    const ubication = this.ubigeoData.find((item) => item.codubi === codubi);
     if (ubication) {
       return `${ubication.depar}-${ubication.provi}-${ubication.distri}`;
     } else {

@@ -10,6 +10,7 @@ export class TeenService {
 
   private urlTeen = `${environment.apiUrlTeen}/api/teenData`;
   private urlUbigeoAddress = `${environment.apiUrlUbigeoAddress}/api/address`;
+  private urlAttorney = `${environment.apiUrlAttorney}/api/attorneyData`;
 
   teenSelected: Teen | undefined = undefined;
 
@@ -26,6 +27,10 @@ export class TeenService {
 
   findAllDataUbigeoAddress() {
     return this.http.get(this.urlUbigeoAddress + '/listData');
+  }
+
+  findAllDataAttorney() {
+    return this.http.get(this.urlAttorney + '/listData');
   }
 
   saveNewTeen(teen: Teen) {

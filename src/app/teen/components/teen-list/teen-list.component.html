@@ -55,7 +55,7 @@
 
   <ng-container matColumnDef="attorney">
     <th mat-header-cell *matHeaderCellDef>Apoderado:</th>
-    <td mat-cell *matCellDef="let element"> {{element.attorney}} </td>
+    <td mat-cell *matCellDef="let element"> {{getAttorneyDataFindBD(element.id_attorney)}} </td>
   </ng-container>
 
   <ng-container matColumnDef="codubi">
