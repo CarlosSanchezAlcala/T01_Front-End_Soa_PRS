@@ -18,7 +18,6 @@ export class TeenFormComponent implements OnInit, OnDestroy {
   funcionaryData: any[] = [];
   teenData: any[] = [];
   ubigeoData: any[] = [];
-  formattedDate: string = '';
   idTeenNecesaryForRegisterAsignation: any[] = [];
 
   constructor(private router: Router,
@@ -103,7 +102,7 @@ export class TeenFormComponent implements OnInit, OnDestroy {
     this.teenServices.saveNewTeen(this.teenDataForm.value).subscribe((teendataRegister: any) => {
       console.log('Los datos ingresados dentro del formulario para registrar || crear son: ', teendataRegister);
       this.idTeenNecesaryForRegisterAsignation = teendataRegister.id_teen;
-      console.log('The last id is: ', this.idTeenNecesaryForRegisterAsignation);
+      console.log('The last id Teen is: ', this.idTeenNecesaryForRegisterAsignation);
 
 
       this.legalGuardianAsignationFrom.patchValue({
