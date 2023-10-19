@@ -1,16 +1,16 @@
 import {Component, OnInit} from '@angular/core';
+import {TeenService} from "@soa/teen/services/teen.service";
 import {Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
-import {Teen} from "@soa/teen/model/teen.model";
 import {TeenFormComponent} from "@soa/teen/components/teen-form/teen-form.component";
-import {TeenService} from "@soa/teen/services/teen.service";
+import {Teen} from "@soa/teen/model/teen.model";
 
 @Component({
-  selector: 'app-teen-list',
-  templateUrl: './teen-list.component.html',
-  styleUrls: ['./teen-list.component.scss'],
+  selector: 'app-teen-list-inactive',
+  templateUrl: './teen-list-inactive.component.html',
+  styleUrls: ['./teen-list-inactive.component.scss']
 })
-export class TeenListComponent implements OnInit {
+export class TeenListInactiveComponent implements OnInit {
 
   teenColumns: string[] = ['name', 'surname', 'dni', 'phonenumber', 'address', 'email', 'birthade', 'gender', 'crime_committed', 'attorney', 'codubi', 'actions'];
   teenData: any[] = [];
@@ -23,7 +23,7 @@ export class TeenListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.findAllDataActive();
+    this.findAllDataInactive();
     this.findAllDataUbigeo();
     this.findAllDataAttorney();
   }
@@ -46,10 +46,10 @@ export class TeenListComponent implements OnInit {
     })
   }
 
-  findAllDataActive() {
-    this.teenServices.findAllDataActive().subscribe((dataTeenActive: any) => {
-      // console.log('Data Teen: ', dataTeenActive);  --------- // Running successfully
-      this.teenData = dataTeenActive;
+  findAllDataInactive() {
+    this.teenServices.findAllDataInactive().subscribe((dataTeenInactive: any) => {
+      // console.log('Data Teen: ', dataTeenInactive);  --------- // Running successfully
+      this.teenData = dataTeenInactive;
     })
   }
 
@@ -85,26 +85,21 @@ export class TeenListComponent implements OnInit {
     }
   }
 
-  navigateToForm() {
-    this.router.navigate(['adolescente/teen-form']).then(() => {
-    })
-  }
-
-  navigateToListInactive() {
-    this.router.navigate(['adolescente/teen-list-inactive']).then(() => {
+  navigateToList() {
+    this.router.navigate(['adolescente/teen-list']).then(() => {
     })
   }
 
   updateDataTeen(teen: Teen) {
     this.teenServices.teenSelected = teen;
-    this.navigateToForm();
-    this.findAllDataActive();
+    this.navigateToList();
+    this.findAllDataInactive();
   }
 
-  deleteDataTeen(teen: Teen) {
-    this.teenServices.deleteLogicalDataTeen(teen).subscribe((dataDeleteLogical) => {
-      // console.log('Se esta eliminando el dato de: ', dataDeleteLogical); --------- // Running successfully
-      this.findAllDataActive();
+  reactiveDataTeen(teen: Teen) {
+    this.teenServices.reactiveLogicalDataTeen(teen).subscribe((dataReactiveTeen) => {
+      // console.log('Se esta eliminando el dato de: ', dataReactiveTeen); --------- // Running successfully
+      this.findAllDataInactive();
     })
   }
 }

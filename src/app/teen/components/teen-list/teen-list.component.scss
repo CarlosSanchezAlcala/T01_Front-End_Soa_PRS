@@ -4,11 +4,15 @@
 }
 
 #formForRegister {
-  margin: 0.7rem 0.7rem 0.0rem 0.7rem;
+  margin: 0.7rem 0.7rem 0.7rem 0.7rem;
   flex: 1 0 calc(10% - 5px); /* Ajusta el 50% a la cantidad de columnas que desees. */
 }
 
 #buttonRegister {
+  margin: 0.7rem 0.7rem 0.7rem 0.7rem;
+}
+
+#buttonListInactive {
   margin: 0.7rem 0.7rem 0.7rem 0.7rem;
 }
 
@@ -18,4 +22,18 @@
 
 #buttonModificar {
   margin: 0.2rem
+}
+
+.container {
+  margin: 0.7rem 0.7rem 0.0rem 0.7rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+td, th {
+  text-align: center;
+  vertical-align: middle;
 }

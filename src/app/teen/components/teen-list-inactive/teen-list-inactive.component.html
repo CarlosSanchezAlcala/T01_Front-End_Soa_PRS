@@ -1,13 +1,5 @@
-<button id="buttonRegister" mat-flat-button color="accent" (click)="navigateToForm()">
-  Nuevo Adolescente
-</button>
-
-<button id="buttonListInactive" mat-flat-button color="accent" (click)="navigateToListInactive()">
-  Adolescente Deshabilitados
-</button>
-
-<button id="formForRegister" (click)="openDialog()" mat-flat-button color="accent">
-  Nuevo registro de Adolescente
+<button id="buttonAdolescentActive" mat-flat-button color="accent" (click)="navigateToList()">
+  Adolescentes Habilitados
 </button>
 
 <div class="container">
@@ -71,9 +63,8 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef>Acciones</th>
       <td mat-cell *matCellDef="let element">
-        <button id="buttonEliminar" mat-flat-button color="warn" (click)="deleteDataTeen(element)">Eliminar</button>
-        <button id="buttonModificar" mat-flat-button color="primary" (click)="updateDataTeen(element)">Modificar
-        </button>
+        <button id="buttonEliminar" mat-flat-button color="warn" (click)="reactiveDataTeen(element)">Restaurar</button>
+        <button id="buttonModificar" mat-flat-button color="primary" disabled (click)="updateDataTeen(element)">Modificar</button>
       </td>
     </ng-container>
 

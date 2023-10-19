@@ -6,21 +6,21 @@
   Funcionarios Inactivos
 </button>
 
-<div *ngIf="showDetails" class="funcionario-details">
-  <h2>Detalles del Funcionario</h2>
-  <p><strong>ID:</strong> {{ selectedFuncionario?.id_funcionary }}</p>
-  <p><strong>Nombre:</strong> {{ selectedFuncionario?.name }}</p>
-  <p><strong>Apellido Paterno:</strong> {{ selectedFuncionario?.surnamefather }}</p>
-  <p><strong>Apellido Materno:</strong> {{ selectedFuncionario?.surnamemother }}</p>
-  <p><strong>DNI:</strong> {{ selectedFuncionario?.dni }}</p>
-  <p><strong>Teléfono:</strong> {{ selectedFuncionario?.phonenumber }}</p>
-  <p><strong>Rol:</strong> {{ selectedFuncionario?.rank }}</p>
-  <p><strong>Departamento:</strong> {{ selectedFuncionario?.department }}</p>
-  <p><strong>Dirección:</strong> {{ selectedFuncionario?.address }}</p>
-  <p><strong>Correo Electrónico:</strong> {{ selectedFuncionario?.email }}</p>
-</div>
+<div class="container">
+  <div *ngIf="showDetails" class="funcionario-details">
+    <h2>Detalles del Funcionario</h2>
+    <p><strong>ID:</strong> {{ selectedFuncionario?.id_funcionary }}</p>
+    <p><strong>Nombre:</strong> {{ selectedFuncionario?.name }}</p>
+    <p><strong>Apellido Paterno:</strong> {{ selectedFuncionario?.surnamefather }}</p>
+    <p><strong>Apellido Materno:</strong> {{ selectedFuncionario?.surnamemother }}</p>
+    <p><strong>DNI:</strong> {{ selectedFuncionario?.dni }}</p>
+    <p><strong>Teléfono:</strong> {{ selectedFuncionario?.phonenumber }}</p>
+    <p><strong>Rol:</strong> {{ selectedFuncionario?.rank }}</p>
+    <p><strong>Departamento:</strong> {{ selectedFuncionario?.department }}</p>
+    <p><strong>Dirección:</strong> {{ selectedFuncionario?.address }}</p>
+    <p><strong>Correo Electrónico:</strong> {{ selectedFuncionario?.email }}</p>
+  </div>
 
-<div class="containerListData">
   <table id="tableOfDataFuncionary" mat-table [dataSource]="funcionaryData" class="mat-elevation-z8">
 
     <ng-container matColumnDef="name">
@@ -72,9 +72,11 @@
       <th mat-header-cell *matHeaderCellDef>Acciones</th>
       <td mat-cell *matCellDef="let element">
         <button id="buttonEliminar" mat-flat-button color="warn"
-          (click)="deleteDataFuncionary(element)">Eliminar</button>
+                (click)="deleteDataFuncionary(element)">Eliminar
+        </button>
         <button id="buttonModificar" mat-flat-button color="primary"
-          (click)="updateDataFuncionary(element)">Modificar</button>
+                (click)="updateDataFuncionary(element)">Modificar
+        </button>
       </td>
     </ng-container>
 
@@ -88,7 +90,7 @@
           <mat-icon>close</mat-icon>
         </button>
         <button mat-icon-button color="primary" (click)="openArchivosDialog(element.dni)"
-          *ngIf="element.estado === 'A'">
+                *ngIf="element.estado === 'A'">
           <mat-icon>find_in_page</mat-icon>
         </button>
     </ng-container>

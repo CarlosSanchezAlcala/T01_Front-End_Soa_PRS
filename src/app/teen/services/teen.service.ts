@@ -1,7 +1,7 @@
-import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {environment} from '@soa/env/environment.development';
 import {Teen} from "@soa/teen/model/teen.model";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root',
@@ -14,34 +14,42 @@ export class TeenService {
 
   teenSelected: Teen | undefined = undefined;
 
-  constructor(private http: HttpClient) {
+  constructor(private __http: HttpClient) {
   }
 
   findAll() {
-    return this.http.get(`${this.urlTeen}/listData`);
+    return this.__http.get(`${this.urlTeen}/listData`);
   }
 
   findAllDataActive() {
-    return this.http.get(this.urlTeen + '/listData/active');
+    return this.__http.get(this.urlTeen + '/listData/active');
+  }
+
+  findAllDataInactive() {
+    return this.__http.get(this.urlTeen + '/listData/inactive');
   }
 
   findAllDataUbigeoAddress() {
-    return this.http.get(this.urlUbigeoAddress + '/listData');
+    return this.__http.get(this.urlUbigeoAddress + '/listData');
   }
 
   findAllDataAttorney() {
-    return this.http.get(this.urlAttorney + '/listData');
+    return this.__http.get(this.urlAttorney + '/listData');
   }
 
   saveNewTeen(teen: Teen) {
-    return this.http.post(this.urlTeen, teen);
+    return this.__http.post(this.urlTeen, teen);
   }
 
   updateDataTeen(teen: Teen) {
-    return this.http.put(this.urlTeen + '/' + teen.id_teen, teen);
+    return this.__http.put(this.urlTeen + '/' + teen.id_teen, teen);
   }
 
   deleteLogicalDataTeen(teen: Teen) {
-    return this.http.patch(this.urlTeen + '/deleteLogical/' + teen.id_teen, teen);
+    return this.__http.patch(this.urlTeen + '/deleteLogical/' + teen.id_teen, teen);
+  }
+
+  reactiveLogicalDataTeen(teen: Teen) {
+    return this.__http.patch(this.urlTeen + '/reactiveLogical/' + teen.id_teen, teen);
   }
 }

@@ -34,13 +34,13 @@ export class AsignationFormComponent implements OnInit, OnDestroy {
 
   navigateToAsignationList() {
     this._router.navigate(['asignacion/asignation-list']).then(() => {
-      console.log('Se está redirigiendo a la lista de todas las asignaciones.')
+      // console.log('Se está redirigiendo a la lista de todas las asignaciones.')
     });
   }
 
   findAllFuncionary() {
     this._asignationDataFuncionaryService.findAllDataActive().subscribe((dataFuncionary: any) => {
-      console.log('Datos obtenidos de Funcionario: ', dataFuncionary);
+      // console.log('Datos obtenidos de Funcionario: ', dataFuncionary);
       //this.funcionaryData = dataFuncionary; => Datos completos de "Funcionario", sin filtrado de Tutor Legal.
     })
   }
