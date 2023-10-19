@@ -39,7 +39,7 @@ export class TeenFormComponent implements OnInit, OnDestroy {
       birthade: [''],
       gender: [''],
       crime_committed: [''],
-      attorney: [''],
+      id_attorney: [''],
       codubi: [''],
       status: ['A'],
     });
@@ -59,6 +59,7 @@ export class TeenFormComponent implements OnInit, OnDestroy {
     this.findAllDataActive();
     this.findAllDataFuncionaryRankLegalGuardian();
     this.findAllDataUbigeo();
+    this.findAllDataAttorney();
   }
 
   navigateToTeenList() {
@@ -76,7 +77,7 @@ export class TeenFormComponent implements OnInit, OnDestroy {
 
   findAllDataAttorney() {
     this.teenServices.findAllDataAttorney().subscribe((dataFindAttorney: any) => {
-        //console.log('Data Attorney: ', dataFindAttorney); //--------- // Running successfully
+        // console.log('Data Attorney: ', dataFindAttorney); //--------- // Running successfully
         this.attorneyData = dataFindAttorney;
     })
   }

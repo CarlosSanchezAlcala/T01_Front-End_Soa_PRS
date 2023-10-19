@@ -72,7 +72,11 @@
 
   <mat-form-field class="formForRegister formForRegister">
     <mat-label>Apoderado:</mat-label>
-    <input matInput formControlName="attorney">
+    <mat-select formControlName="id_attorney">
+      <mat-option *ngFor="let dAttor of attorneyData" [value]="dAttor.id_attorney">
+        {{dAttor.name}} {{dAttor.surnamefather}} {{dAttor.surnamemother}}
+      </mat-option>
+    </mat-select>
   </mat-form-field>
 
   <mat-form-field class="formForRegister formForRegister">
