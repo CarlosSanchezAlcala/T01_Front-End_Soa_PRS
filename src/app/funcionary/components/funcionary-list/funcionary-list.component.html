@@ -80,20 +80,22 @@
       </td>
     </ng-container>
 
-    <ng-container matColumnDef="detalles">
-      <th mat-header-cell *matHeaderCellDef>Detalles</th>
-      <td mat-cell *matCellDef="let element">
-        <button mat-icon-button color="primary" (click)="showFuncionarioDetails(element)">
-          <mat-icon>visibility</mat-icon> <!-- Icono de ojo para mostrar detalles -->
-        </button>
-        <button mat-icon-button color="accent" (click)="closeDetails()" *ngIf="selectedFuncionario === element">
-          <mat-icon>close</mat-icon>
-        </button>
-        <button mat-icon-button color="primary" (click)="openArchivosDialog(element.dni)"
-                *ngIf="element.estado === 'A'">
-          <mat-icon>find_in_page</mat-icon>
-        </button>
-    </ng-container>
+    <div class="container1">
+      <ng-container matColumnDef="detalles">
+        <th mat-header-cell *matHeaderCellDef>Detalles</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button color="primary" (click)="showFuncionarioDetails(element)">
+            <mat-icon>visibility</mat-icon> <!-- Icono de ojo para mostrar detalles -->
+          </button>
+          <button mat-icon-button color="accent" (click)="closeDetails()" *ngIf="selectedFuncionario === element">
+            <mat-icon>close</mat-icon>
+          </button>
+          <button mat-icon-button color="primary" (click)="openArchivosDialog(element.dni)"
+                  *ngIf="element.estado === 'A'">
+            <mat-icon>find_in_page</mat-icon>
+          </button>
+      </ng-container>
+    </div>
 
     <tr mat-header-row *matHeaderRowDef="funcionaryColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: funcionaryColumns;"></tr>
