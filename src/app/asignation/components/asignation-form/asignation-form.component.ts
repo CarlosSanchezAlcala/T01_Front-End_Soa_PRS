@@ -54,7 +54,7 @@ export class AsignationFormComponent implements OnInit, OnDestroy {
 
   findAllTeen() {
     this._asignationDataTeenService.findAllDataActive().subscribe((dataTeen: any) => {
-      console.log('Datos obtenidos de Funcionario: ', dataTeen);
+      console.log('Datos obtenidos de Adolescentes: ', dataTeen);
       //this.teenData = dataTeen; => Datos completos de "Teen", sin filtrado si en caso ya está registrado.
     })
   }

@@ -14,7 +14,7 @@ import { ArchivosDComponent } from '@soa/archivos-d/archivos-d.component';
 })
 export class FuncionaryListComponent implements OnInit {
 
-  funcionaryColumns: string[] = ['name', 'surname', 'dni', 'phonenumber', 'range', 'confirmation', 'address', 'ubigeo-address', 'email', 'actions', 'detalles'];
+  funcionaryColumns: string[] = ['name', 'surname', 'dni', 'phonenumber', 'range', 'confirmation', 'address', 'actions', 'detalles'];
   funcionaryData: any[] = [];
   ubigeoData: any[] = [];
   selectedFuncionario: any;

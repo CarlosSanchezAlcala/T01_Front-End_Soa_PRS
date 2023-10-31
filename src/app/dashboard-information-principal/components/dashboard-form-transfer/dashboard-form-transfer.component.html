@@ -1,0 +1,36 @@
+<div class="containerForBackInformationTransfer">
+  <p class="textInformativeAboutTransfer">Por favor de seleccionar todos los datos correspondientes a la nueva ubicación o transferencia del adolescente.</p>
+</div>
+
+<div class="containerDataForm">
+  <form id="formColumn" [formGroup]="transferDataForm">
+
+    <mat-form-field class="formForRegister formForRegister">
+      <mat-label>Adolescente:</mat-label>
+      <mat-select formControlName="id_teen">
+        <mat-option *ngFor="let dTeen of teenDataForTransfer" [value]="dTeen.id_teen">
+          {{dTeen.name}} {{dTeen.surnamefather}} {{dTeen.surnamemother}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="formForRegister formForRegister">
+      <mat-label>Adolescente:</mat-label>
+      <mat-select formControlName="id_operativeunit">
+        <mat-option *ngFor="let dSoa of soaDataForTransfer" [value]="dSoa.id_operativeunit">
+          {{dSoa.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div id="buttonActions">
+      <button type="button" id="buttonCancel" mat-flat-button color="primary" (click)="navigateToBackInformation()">
+        Cancelar
+      </button>
+      <button type="submit" id="buttonSave" mat-flat-button color="accent" [disabled]="transferDataForm.invalid">
+
+      </button>
+    </div>
+  </form>
+</div>
+

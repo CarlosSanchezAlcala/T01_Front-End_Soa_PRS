@@ -10,7 +10,7 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'funcionary'
+        redirectTo: 'information'
       },
       {
         path: 'funcionario',
@@ -23,6 +23,10 @@ const routes: Routes = [
       {
         path: 'asignacion',
         loadChildren: () => import('./asignation/asignation.module').then(m => m.AsignationModule)
+      },
+      {
+        path: 'information',
+        loadChildren: () => import('./dashboard-information-principal/dashboard-information-principal.module').then(m => m.DashboardInformationPrincipalModule)
       }
     ]
   }
