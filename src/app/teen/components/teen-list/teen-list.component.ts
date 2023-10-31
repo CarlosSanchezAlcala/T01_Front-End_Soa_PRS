@@ -12,9 +12,10 @@ import {TeenService} from "@soa/teen/services/teen.service";
 })
 export class TeenListComponent implements OnInit {
 
-  teenColumns: string[] = ['name', 'surname', 'dni', 'phonenumber', 'address', 'email', 'birthade', 'gender', 'crime_committed', 'attorney', 'codubi', 'actions'];
+  teenColumns: string[] = ['name', 'surname', 'dni', 'phonenumber', 'address', 'email', 'birthade', 'gender', 'soaInformation', 'crime_committed', 'attorney', 'codubi', 'actions'];
   teenData: any[] = [];
   ubigeoData: any[] = [];
+  soaInformationData: any[] = [];
   attorneyData: any[] = [];
 
   constructor(public teenServices: TeenService,
@@ -25,6 +26,7 @@ export class TeenListComponent implements OnInit {
   ngOnInit(): void {
     this.findAllDataActive();
     this.findAllDataUbigeo();
+    this.findAllDataSoaInformation();
     this.findAllDataAttorney();
   }
 
@@ -60,6 +62,13 @@ export class TeenListComponent implements OnInit {
     })
   }
 
+  findAllDataSoaInformation() {
+    this.teenServices.findAllDataSoaInformation().subscribe((dataSoaInformation: any) => {
+      // console.log('Data Soa: ', dataSoaInformation); --------- // Running successfully
+      this.soaInformationData = dataSoaInformation;
+    })
+  }
+
   findAllDataAttorney() {
     this.teenServices.findAllDataAttorney().subscribe((dataFindAttorney: any) => {
       // console.log('Data Attorney: ', dataFindAttorney); //--------- // Running successfully
@@ -73,6 +82,15 @@ export class TeenListComponent implements OnInit {
       return `${attorney.name} ${attorney.surnamefather} ${attorney.surnamemother}`;
     } else {
       return 'Apoderado no determinado.'
+    }
+  }
+
+  getSoaFindBD(id_operativeunit: number) {
+    const soa = this.soaInformationData.find((item) => item.id_operativeunit === id_operativeunit);
+    if (soa) {
+      return `${soa.name}`;
+    } else {
+      return 'El SOA no ha sido encontrado.'
     }
   }
 

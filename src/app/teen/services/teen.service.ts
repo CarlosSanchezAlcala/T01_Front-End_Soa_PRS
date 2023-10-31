@@ -11,6 +11,7 @@ export class TeenService {
   private urlTeen = `${environment.apiUrlTeen}/api/teenData`;
   private urlUbigeoAddress = `${environment.apiUrlUbigeoAddress}/api/address`;
   private urlAttorney = `${environment.apiUrlAttorney}/api/attorneyData`;
+  private urlSoaInformation = `${environment.apiUrlOperativeUnit}/api/operativeUnit`
 
   teenSelected: Teen | undefined = undefined;
 
@@ -31,6 +32,10 @@ export class TeenService {
 
   findAllDataUbigeoAddress() {
     return this.__http.get(this.urlUbigeoAddress + '/listData');
+  }
+
+  findAllDataSoaInformation() {
+    return this.__http.get(this.urlSoaInformation + '/listData');
   }
 
   findAllDataAttorney() {

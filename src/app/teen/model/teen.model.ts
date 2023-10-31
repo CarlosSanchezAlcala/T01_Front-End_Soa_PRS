@@ -9,6 +9,7 @@ export interface Teen {
   email: string;
   birthade: Date;
   gender: string;
+  id_operativeunit: number;
   crime_committed: string;
   id_attorney: number;
   codubi: string;
