@@ -28,6 +28,13 @@ export class DashboardFormTransferComponent implements OnInit, OnDestroy {
         this.findAllDataSoa();
     }
 
+    initTransferForm() {
+        this.transferDataForm = this._fb.group({
+            id_teen: [''],
+            id_operativeunit: [''],
+        });
+    }
+
     onSubmitForm() {
         if (this.transferDataForm.valid) {
             const idTeenSelectedForm = this.transferDataForm.get('id_teen')?.value;
@@ -46,7 +53,7 @@ export class DashboardFormTransferComponent implements OnInit, OnDestroy {
                 email: selectedTeen.email,
                 birthade: selectedTeen.birthade,
                 gender: selectedTeen.gender,
-                id_operativeunit: selectedTeen.id_operativeunit,
+                id_operativeunit: idOperativeUnitSelectedForm,
                 crimeCommitted: selectedTeen.crimeCommitted,
                 id_attorney: selectedTeen.id_attorney,
                 codubi: selectedTeen.codubi,
@@ -55,6 +62,11 @@ export class DashboardFormTransferComponent implements OnInit, OnDestroy {
 
             this._teenService.transferDataTeen(teen).subscribe((dataTransferTeen) => {
                 console.log('Data transferida: ', dataTransferTeen);
+                this.navigateToBackInformation();
+            });
+
+            this._teenService.saveNewTeen(teen).subscribe((dataSaveNewTeen) => {
+                console.log('Data guardada: ', dataSaveNewTeen);
                 this.navigateToBackInformation();
             });
         }
@@ -87,20 +99,6 @@ export class DashboardFormTransferComponent implements OnInit, OnDestroy {
         } else {
             return 'El SOA no ha sido encontrado.'
         }
-    }
-
-    //transferDataTeen(teen: Teen) {
-        //this._teenService.transferDataTeen(teen).subscribe((dataTransferTeen) => {
-            //console.log('Data transferida: ', dataTransferTeen);
-            //this.navigateToBackInformation();
-       // })
-   //}
-
-    initTransferForm() {
-        this.transferDataForm = this._fb.group({
-            id_teen: [''],
-            id_operativeunit: [''],
-        });
     }
 
     ngOnDestroy(): void {
