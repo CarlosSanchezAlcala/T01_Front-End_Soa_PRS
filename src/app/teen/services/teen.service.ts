@@ -11,7 +11,7 @@ export class TeenService {
   private urlTeen = `${environment.apiUrlTeen}/api/teenData`;
   private urlUbigeoAddress = `${environment.apiUrlUbigeoAddress}/api/address`;
   private urlAttorney = `${environment.apiUrlAttorney}/api/attorneyData`;
-  private urlOperativeUnit = `${environment.apiUrlOperativeUnit}/api/operativeUnit`
+  private urlOperativeUnit = `${environment.apiUrlOperativeUnit}/api/operativeUnit`;
 
   teenSelected: Teen | undefined = undefined;
 
