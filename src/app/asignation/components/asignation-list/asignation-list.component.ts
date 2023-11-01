@@ -26,27 +26,27 @@ export class AsignationListComponent implements OnInit {
 
   navigateToForm() {
     this._router.navigate(['asignacion/asignation-form']).then(() => {
-      console.log('Se está redirigiendo al formulario de registro.')
+      //console.log('Se está redirigiendo al formulario de registro.')
     })
   }
 
   findAllDataWithoutBody() {
     this._asignationService.findAllDatosWithoutBody().subscribe((dataAllWithoutBody: any) => {
-      console.log('Datos encontrados sin cuerpo de relleno son: ', dataAllWithoutBody);
+      //console.log('Datos encontrados sin cuerpo de relleno son: ', dataAllWithoutBody);
       this.withOutBodyAsignation = dataAllWithoutBody;
     })
   }
 
   findAllDataAsignation() {
     this._asignationService.findAll().subscribe((dataAsignation: any) => {
-      console.log('Datos de la asignación: ', dataAsignation);
+      //console.log('Datos de la asignación: ', dataAsignation);
       //this.asignationData = dataAsignation; => No hace el filtrado por datos activos.
     })
   }
 
   findAllDataActive() {
     this._asignationService.findAllDataActive().subscribe((dataAsignationActive: any) => {
-      console.log('Datos de la asignación en modo Activo: ', dataAsignationActive);
+      //console.log('Datos de la asignación en modo Activo: ', dataAsignationActive);
       this.asignationData = dataAsignationActive;
     })
   }

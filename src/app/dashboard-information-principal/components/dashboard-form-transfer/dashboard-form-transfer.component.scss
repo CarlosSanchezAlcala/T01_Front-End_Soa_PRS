@@ -7,3 +7,13 @@
   flex-direction: column;
   margin: 1rem 1rem 1rem 1rem;
 }
+
+#buttonActions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+ #buttonCancel,
+ #buttonCancel {
+   margin: 0.3rem 0.3rem 0.3rem 0.3rem;
+ }

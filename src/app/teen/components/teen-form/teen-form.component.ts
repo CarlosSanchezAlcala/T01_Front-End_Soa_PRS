@@ -17,6 +17,7 @@ export class TeenFormComponent implements OnInit, OnDestroy {
   legalGuardianAsignationFrom: FormGroup = new FormGroup({});
   funcionaryData: any[] = [];
   attorneyData: any[] = [];
+  operativeUnitData: any[] = [];
   teenData: any[] = [];
   ubigeoData: any[] = [];
   idTeenNecesaryForRegisterAsignation: any[] = [];
@@ -30,15 +31,16 @@ export class TeenFormComponent implements OnInit, OnDestroy {
     this.teenDataForm = this.fb.group({
       id_teen: [null],
       name: [''],
-      surnamefather: [''],
-      surnamemother: [''],
+      surnameFather: [''],
+      surnameMother: [''],
       dni: [''],
-      phonenumber: [''],
+      phoneNumber: [''],
       address: [''],
       email: [''],
       birthade: [''],
       gender: [''],
-      crime_committed: [''],
+      id_operativeunit: [''],
+      crimeCommitted: [''],
       id_attorney: [''],
       codubi: [''],
       status: ['A'],
@@ -60,6 +62,7 @@ export class TeenFormComponent implements OnInit, OnDestroy {
     this.findAllDataFuncionaryRankLegalGuardian();
     this.findAllDataUbigeo();
     this.findAllDataAttorney();
+    this.findAllDataOperativeUnit();
   }
 
   navigateToTeenList() {
@@ -79,6 +82,12 @@ export class TeenFormComponent implements OnInit, OnDestroy {
     this.teenServices.findAllDataAttorney().subscribe((dataFindAttorney: any) => {
         // console.log('Data Attorney: ', dataFindAttorney); //--------- // Running successfully
         this.attorneyData = dataFindAttorney;
+    })
+  }
+
+  findAllDataOperativeUnit() {
+    this.teenServices.findAllDataOperativeUnit().subscribe((dataOperativeUnit: any) => {
+      this.operativeUnitData = dataOperativeUnit;
     })
   }
 

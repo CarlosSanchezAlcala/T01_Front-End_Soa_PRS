@@ -11,6 +11,7 @@ export class TeenService {
   private urlTeen = `${environment.apiUrlTeen}/api/teenData`;
   private urlUbigeoAddress = `${environment.apiUrlUbigeoAddress}/api/address`;
   private urlAttorney = `${environment.apiUrlAttorney}/api/attorneyData`;
+  private urlOperativeUnit = `${environment.apiUrlOperativeUnit}/api/operativeUnit`
 
   teenSelected: Teen | undefined = undefined;
 
@@ -33,6 +34,10 @@ export class TeenService {
     return this.__http.get(this.urlUbigeoAddress + '/listData');
   }
 
+  findAllDataOperativeUnit() {
+    return this.__http.get(this.urlOperativeUnit + '/listData');
+  }
+
   findAllDataAttorney() {
     return this.__http.get(this.urlAttorney + '/listData');
   }
@@ -43,6 +48,10 @@ export class TeenService {
 
   updateDataTeen(teen: Teen) {
     return this.__http.put(this.urlTeen + '/' + teen.id_teen, teen);
+  }
+
+  transferDataTeen(teen: Teen) {
+    return this.__http.patch(this.urlTeen + '/transferTeen/' + teen.id_teen, teen);
   }
 
   deleteLogicalDataTeen(teen: Teen) {

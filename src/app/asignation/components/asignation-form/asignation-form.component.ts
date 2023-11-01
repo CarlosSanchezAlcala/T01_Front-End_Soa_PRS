@@ -15,8 +15,6 @@ export class AsignationFormComponent implements OnInit, OnDestroy {
   asignationDataForm: FormGroup = new FormGroup({});
   funcionaryData: any[] = [];
   teenData: any[] = [];
-  allDataAsignation: any[] = [];
-  dataNoRegisterInBd: any[] = [];
 
   constructor(private _router: Router,
               public _asignationService: AsignationService,
@@ -47,21 +45,21 @@ export class AsignationFormComponent implements OnInit, OnDestroy {
 
   findAllDataFuncionaryRankLegalGuardian() {
     this._asignationDataFuncionaryService.findDataRankLegalGuardian().subscribe((dataLegalGuardianRank: any) => {
-      console.log('Funcionarios con rank de Tutor Legal: ', dataLegalGuardianRank);
+      //console.log('Funcionarios con rank de Tutor Legal: ', dataLegalGuardianRank);
       this.funcionaryData = dataLegalGuardianRank;
     })
   }
 
   findAllTeen() {
     this._asignationDataTeenService.findAllDataActive().subscribe((dataTeen: any) => {
-      console.log('Datos obtenidos de Adolescentes: ', dataTeen);
+      //console.log('Datos obtenidos de Adolescentes: ', dataTeen);
       //this.teenData = dataTeen; => Datos completos de "Teen", sin filtrado si en caso ya está registrado.
     })
   }
 
   finAllDataTeenNoRegistered() {
     this._asignationService.findDataTeenNoRegistered().subscribe((dataTeenNoRegistered: any) => {
-      console.log('Los adolescente disponibles para el registro son: ', dataTeenNoRegistered);
+      //console.log('Los adolescente disponibles para el registro son: ', dataTeenNoRegistered);
       this.teenData = dataTeenNoRegistered;
     })
   }

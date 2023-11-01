@@ -13,8 +13,8 @@
       <th mat-header-cell *matHeaderCellDef>Datos del Funcionario:</th>
       <td mat-cell *matCellDef="let dataTransaccional">
         {{dataTransaccional.funcionaryResponseDto.name}}
-        {{dataTransaccional.funcionaryResponseDto.surnamefather}}
-        {{dataTransaccional.funcionaryResponseDto.surnamemother}}
+        {{dataTransaccional.funcionaryResponseDto.surnameFather}}
+        {{dataTransaccional.funcionaryResponseDto.surnameMother}}
       </td>
     </ng-container>
 
@@ -29,8 +29,8 @@
       <th mat-header-cell *matHeaderCellDef>Datos del Adolescente:</th>
       <td mat-cell *matCellDef="let dataTransaccional">
         {{dataTransaccional.teenResponseDto.name}}
-        {{dataTransaccional.teenResponseDto.surnamefather}}
-        {{dataTransaccional.teenResponseDto.surnamemother}}
+        {{dataTransaccional.teenResponseDto.surnameFather}}
+        {{dataTransaccional.teenResponseDto.surnameMother}}
       </td>
     </ng-container>
 
@@ -52,7 +52,7 @@
       <th mat-header-cell *matHeaderCellDef> Acciones</th>
       <td mat-cell *matCellDef="let dataTransaccional">
         <button id="buttonEliminar" mat-flat-button color="warn"
-                (click)="dataTransaccional && dataTransaccional.asignationData && dataTransaccional.asignationData.id_funcionaryteend !== undefined ? deleteDataCompleteAsignation(dataTransaccional.asignationData.id_funcionaryteend) : null">
+                (click)="deleteDataCompleteAsignation(dataTransaccional)">
           Eliminar
         </button>
         <button id="buttonModificar" mat-flat-button color="primary"

@@ -3,13 +3,13 @@
 </div>
 
 <div class="containerDataForm">
-  <form id="formColumn" [formGroup]="transferDataForm">
+  <form id="formColumn" [formGroup]="transferDataForm" (ngSubmit)="onSubmitForm()">
 
     <mat-form-field class="formForRegister formForRegister">
       <mat-label>Adolescente:</mat-label>
       <mat-select formControlName="id_teen">
         <mat-option *ngFor="let dTeen of teenDataForTransfer" [value]="dTeen.id_teen">
-          {{dTeen.name}} {{dTeen.surnamefather}} {{dTeen.surnamemother}}
+          {{dTeen.name}} {{dTeen.surnameFather}} {{dTeen.surnameMother}}
         </mat-option>
       </mat-select>
     </mat-form-field>
@@ -28,7 +28,7 @@
         Cancelar
       </button>
       <button type="submit" id="buttonSave" mat-flat-button color="accent" [disabled]="transferDataForm.invalid">
-
+        Iniciar transferencia
       </button>
     </div>
   </form>
