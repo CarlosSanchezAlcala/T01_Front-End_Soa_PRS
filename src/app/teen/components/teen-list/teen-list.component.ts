@@ -80,7 +80,7 @@ export class TeenListComponent implements OnInit {
     getAttorneyFindBD(id_attorney: number) {
         const attorney = this.attorneyData.find((item) => item.id_attorney === id_attorney);
         if (attorney) {
-            return `${attorney.name} ${attorney.surnamefather} ${attorney.surnamemother}`;
+            return `${attorney.name} ${attorney.surnameFather} ${attorney.surnameMother}`;
         } else {
             return 'Apoderado no determinado.'
         }
