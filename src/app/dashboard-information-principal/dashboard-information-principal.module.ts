@@ -7,7 +7,7 @@ import { DashboardInformationPrincipalComponent } from "@soa/dashboard-informati
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
 import { DashboardFormTransferComponent } from './components/dashboard-form-transfer/dashboard-form-transfer.component';
 import {MatInputModule} from "@angular/material/input";
@@ -19,15 +19,16 @@ import {MatInputModule} from "@angular/material/input";
     DashboardScreenSoaComponent,
     DashboardFormTransferComponent
   ],
-  imports: [
-    CommonModule,
-    DashboardInformationPrincipalRoutingModule,
-    MatFormFieldModule,
-    MatOptionModule,
-    MatSelectModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatInputModule
-  ]
+    imports: [
+        CommonModule,
+        DashboardInformationPrincipalRoutingModule,
+        MatFormFieldModule,
+        MatOptionModule,
+        MatSelectModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatInputModule,
+        FormsModule
+    ]
 })
 export class DashboardInformationPrincipalModule { }
