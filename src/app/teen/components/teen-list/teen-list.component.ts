@@ -12,11 +12,13 @@ import {TeenService} from "@soa/teen/services/teen.service";
 })
 export class TeenListComponent implements OnInit {
 
-    teenColumns: string[] = ['name', 'surname', 'dni', 'phonenumber', 'address', 'email', 'birthade', 'gender', 'soaOperativeUnit', 'crime_committed', 'attorney', 'codubi', 'actions'];
+    teenColumns: string[] = ['name', 'surname', 'dni', 'phonenumber', 'address', 'gender', 'soaOperativeUnit', 'crime_committed', 'actions', 'details'];
     teenData: any[] = [];
     ubigeoData: any[] = [];
     operativeUnitData: any[] = [];
+    selectedTeen: any;
     attorneyData: any[] = [];
+    showDetails = false;
 
     constructor(public teenServices: TeenService,
                 private router: Router,
@@ -100,6 +102,16 @@ export class TeenListComponent implements OnInit {
         } else {
             return 'Ubicación no determinada.'
         }
+    }
+
+    showTeenDetail(teen: any) {
+        this.selectedTeen = teen;
+        this.showDetails = true;
+    }
+
+    closeDetails() {
+        this.selectedTeen = null;
+        this.showDetails = false;
     }
 
     navigateToForm() {

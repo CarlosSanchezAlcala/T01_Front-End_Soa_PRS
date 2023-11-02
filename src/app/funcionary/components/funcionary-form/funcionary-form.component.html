@@ -23,16 +23,16 @@
 
     <mat-form-field class="formForRegister formForRegister">
       <mat-label>Apellido Paterno:</mat-label>
-      <input matInput formControlName="surnamefather"/>
-      <mat-error *ngIf="funcionaryDataForm.get('surnamefather')?.hasError('required')">
+      <input matInput formControlName="surnameFather"/>
+      <mat-error *ngIf="funcionaryDataForm.get('surnameFather')?.hasError('required')">
         Obligatorio
       </mat-error>
     </mat-form-field>
 
     <mat-form-field class="formForRegister formForRegister">
       <mat-label>Apellido Materno:</mat-label>
-      <input matInput formControlName="surnamemother"/>
-      <mat-error *ngIf="funcionaryDataForm.get('surnamefather')?.hasError('required')">
+      <input matInput formControlName="surnameMother"/>
+      <mat-error *ngIf="funcionaryDataForm.get('surnameMother')?.hasError('required')">
         Obligatorio
       </mat-error>
     </mat-form-field>
@@ -50,11 +50,11 @@
 
     <mat-form-field class="formForRegister formForRegister">
       <mat-label>Número de celular:</mat-label>
-      <input maxlength="9" minlength="9" pattern="[0-9]*" matInput formControlName="phonenumber"/>
-      <mat-error *ngIf="funcionaryDataForm.get('phonenumber')?.hasError('required')">
+      <input maxlength="9" minlength="9" pattern="[0-9]*" matInput formControlName="phoneNumber"/>
+      <mat-error *ngIf="funcionaryDataForm.get('phoneNumber')?.hasError('required')">
         Obligatorio
       </mat-error>
-      <mat-error *ngIf="funcionaryDataForm.get('phonenumber')?.hasError('pattern')">
+      <mat-error *ngIf="funcionaryDataForm.get('phoneNumber')?.hasError('pattern')">
         Ingresar Teléfono Correcto
       </mat-error>
     </mat-form-field>

@@ -35,10 +35,10 @@ export class FuncionaryFormComponent implements OnInit, OnDestroy {
     this.funcionaryDataForm = this.fb.group({
       id_funcionary: [null],
       name: ['', Validators.required],
-      surnamefather: ['', Validators.required],
-      surnamemother: ['', Validators.required],
+      surnameFather: ['', Validators.required],
+      surnameMother: ['', Validators.required],
       dni: ['', Validators.required],
-      phonenumber: ['', Validators.required],
+      phoneNumber: ['', Validators.required],
       range: ['', Validators.required],
       confirmation: ['N'],
       address: ['', Validators.required],

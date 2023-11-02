@@ -17,9 +17,10 @@ import {TeenFormComponent} from "@soa/teen/components/teen-form/teen-form.compon
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import { TeenListInactiveComponent } from './components/teen-list-inactive/teen-list-inactive.component';
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [HomeTeenPage, TeenListComponent, TeenFormComponent, TeenListInactiveComponent],
-    imports: [CommonModule, TeenRoutingModule, MatTableModule, MatButtonModule, MatDialogModule, MatInputModule, ReactiveFormsModule, MatOptionModule, MatSelectModule, MatDatepickerModule, MatAutocompleteModule],
+    imports: [CommonModule, TeenRoutingModule, MatTableModule, MatButtonModule, MatDialogModule, MatInputModule, ReactiveFormsModule, MatOptionModule, MatSelectModule, MatDatepickerModule, MatAutocompleteModule, MatIconModule],
 })
 export class TeenModule {}

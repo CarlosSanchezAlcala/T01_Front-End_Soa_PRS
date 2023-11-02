@@ -1,101 +1,103 @@
 <button id="buttonRegister" mat-flat-button color="accent" (click)="navigateToForm()">
-  Agregar nuevo Funcionario
+    Agregar nuevo Funcionario
 </button>
 
 <button id="buttonListInactive" mat-flat-button color="accent" (click)="navigateToInactive()">
-  Funcionarios Inactivos
+    Funcionarios Inactivos
 </button>
 
 <div class="container">
 
-  <div *ngIf="showDetails" class="dialog-background">
-    <div class="dialog-content">
+    <div *ngIf="showDetails" class="dialog-background">
+        <div class="dialog-content">
 
-      <div class="container-div-button-close">
-        <button mat-icon-button color="accent" (click)="closeDetails()">
-          <mat-icon>close</mat-icon>
-        </button>
-      </div>
+            <div class="container-div-button-close">
+                <button mat-icon-button color="accent" (click)="closeDetails()">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </div>
 
-      <h2>Detalles del Funcionario</h2>
-      <p><strong>Nombre:</strong> {{ selectedFuncionario?.name }}</p>
-      <p><strong>Apellido Paterno:</strong> {{ selectedFuncionario?.surnameFather }}</p>
-      <p><strong>Apellido Materno:</strong> {{ selectedFuncionario?.surnameMother }}</p>
-      <p><strong>Número de DNI:</strong> {{ selectedFuncionario?.dni }}</p>
-      <p><strong>Teléfono:</strong> {{ selectedFuncionario?.phoneNumber }}</p>
-      <p><strong>Rango:</strong> {{ selectedFuncionario?.range }}</p>
-      <p><strong>¿Cumple requerimientos?:</strong> {{ getCompleteConfirmation(selectedFuncionario?.confirmation) }}</p>
-      <p><strong>Dirección:</strong> {{ selectedFuncionario?.address }}</p>
-      <p><strong>¿Cumple requerimientos?:</strong> {{ getDataUbigeoFind(selectedFuncionario?.codubi) }}</p>
-      <p><strong>Correo Electrónico:</strong> {{ selectedFuncionario?.email }}</p>
-    </div>
-  </div>
-
-  <table id="tableOfDataFuncionary" mat-table [dataSource]="funcionaryData" class="mat-elevation-z8">
-
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef>Nombres:</th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="surname">
-      <th mat-header-cell *matHeaderCellDef>Apellidos:</th>
-      <td mat-cell *matCellDef="let element"> {{element.surnameFather}} {{element.surnameMother}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="dni">
-      <th mat-header-cell *matHeaderCellDef>DNI:</th>
-      <td mat-cell *matCellDef="let element"> {{element.dni}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="phonenumber">
-      <th mat-header-cell *matHeaderCellDef>Celular:</th>
-      <td mat-cell *matCellDef="let element"> {{element.phoneNumber}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="range">
-      <th mat-header-cell *matHeaderCellDef>Cargo:</th>
-      <td mat-cell *matCellDef="let element"> {{element.range}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="confirmation">
-      <th mat-header-cell *matHeaderCellDef>Tutor Legal:</th>
-      <td mat-cell *matCellDef="let element"> {{getCompleteConfirmation(element.confirmation)}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="address">
-      <th mat-header-cell *matHeaderCellDef>Dirección:</th>
-      <td mat-cell *matCellDef="let element"> {{element.address}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef>Acciones</th>
-      <td mat-cell *matCellDef="let element">
-        <button id="buttonEliminar" mat-flat-button color="warn"
-                (click)="deleteDataFuncionary(element)">Eliminar
-        </button>
-        <button id="buttonModificar" mat-flat-button color="primary"
-                (click)="updateDataFuncionary(element)">Modificar
-        </button>
-      </td>
-    </ng-container>
-
-    <div class="container1">
-      <ng-container matColumnDef="detalles">
-        <th mat-header-cell *matHeaderCellDef>Detalles</th>
-        <td mat-cell *matCellDef="let element">
-          <button mat-icon-button color="primary" (click)="showFuncionarioDetails(element)">
-            <mat-icon>visibility</mat-icon> <!-- Icono de ojo para mostrar detalles -->
-          </button>
-          <button mat-icon-button color="primary" (click)="openArchivosDialog(element.dni)"
-                  *ngIf="element.estado === 'A'">
-            <mat-icon>find_in_page</mat-icon>
-          </button>
-      </ng-container>
+            <h2>Detalles del Funcionario</h2>
+            <p><strong>Nombre:</strong> {{ selectedFuncionario?.name }}</p>
+            <p><strong>Apellido Paterno:</strong> {{ selectedFuncionario?.surnameFather }}</p>
+            <p><strong>Apellido Materno:</strong> {{ selectedFuncionario?.surnameMother }}</p>
+            <p><strong>Número de DNI:</strong> {{ selectedFuncionario?.dni }}</p>
+            <p><strong>Teléfono:</strong> {{ selectedFuncionario?.phoneNumber }}</p>
+            <p><strong>Rango:</strong> {{ selectedFuncionario?.range }}</p>
+            <p><strong>¿Cumple
+                requerimientos?:</strong> {{ getCompleteConfirmation(selectedFuncionario?.confirmation) }}</p>
+            <p><strong>Dirección:</strong> {{ selectedFuncionario?.address }}</p>
+            <p><strong>¿Cumple requerimientos?:</strong> {{ getDataUbigeoFind(selectedFuncionario?.codubi) }}</p>
+            <p><strong>Correo Electrónico:</strong> {{ selectedFuncionario?.email }}</p>
+        </div>
     </div>
 
-    <tr mat-header-row *matHeaderRowDef="funcionaryColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: funcionaryColumns;"></tr>
+    <table id="tableOfDataFuncionary" mat-table [dataSource]="funcionaryData" class="mat-elevation-z8">
 
-  </table>
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Nombres:</th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="surname">
+            <th mat-header-cell *matHeaderCellDef>Apellidos:</th>
+            <td mat-cell *matCellDef="let element"> {{element.surnameFather}} {{element.surnameMother}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="dni">
+            <th mat-header-cell *matHeaderCellDef>DNI:</th>
+            <td mat-cell *matCellDef="let element"> {{element.dni}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="phonenumber">
+            <th mat-header-cell *matHeaderCellDef>Celular:</th>
+            <td mat-cell *matCellDef="let element"> {{element.phoneNumber}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="range">
+            <th mat-header-cell *matHeaderCellDef>Cargo:</th>
+            <td mat-cell *matCellDef="let element"> {{element.range}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="confirmation">
+            <th mat-header-cell *matHeaderCellDef>Tutor Legal:</th>
+            <td mat-cell *matCellDef="let element"> {{getCompleteConfirmation(element.confirmation)}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="address">
+            <th mat-header-cell *matHeaderCellDef>Dirección:</th>
+            <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Acciones</th>
+            <td mat-cell *matCellDef="let element">
+                <button id="buttonEliminar" mat-flat-button color="warn"
+                        (click)="deleteDataFuncionary(element)">Eliminar
+                </button>
+                <button id="buttonModificar" mat-flat-button color="primary"
+                        (click)="updateDataFuncionary(element)">Modificar
+                </button>
+            </td>
+        </ng-container>
+
+        <div class="container1">
+            <ng-container matColumnDef="detalles">
+                <th mat-header-cell *matHeaderCellDef>Más información</th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-icon-button color="primary" (click)="showFuncionarioDetails(element)">
+                        <mat-icon>visibility</mat-icon>
+                    </button>
+                    <button mat-icon-button color="primary" (click)="openArchivosDialog(element.dni)"
+                            *ngIf="element.estado === 'A'">
+                        <mat-icon>find_in_page</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+        </div>
+
+        <tr mat-header-row *matHeaderRowDef="funcionaryColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: funcionaryColumns;"></tr>
+
+    </table>
 </div>
