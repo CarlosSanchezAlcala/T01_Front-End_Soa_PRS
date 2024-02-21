@@ -8,7 +8,7 @@
     <mat-form-field class="formForRegister formForRegister">
       <mat-label>Adolescente:</mat-label>
       <mat-select formControlName="id_teen">
-        <mat-option *ngFor="let dTeen of teenDataForTransfer" [value]="dTeen.id_teen" (change)="onTeenSelectionChange()">
+        <mat-option *ngFor="let dTeen of teenDataForTransfer" [value]="dTeen.id_teen">
           {{dTeen.name}} {{dTeen.surnameFather}} {{dTeen.surnameMother}}
         </mat-option>
       </mat-select>
